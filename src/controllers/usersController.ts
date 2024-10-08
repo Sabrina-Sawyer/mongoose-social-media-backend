@@ -1,10 +1,11 @@
-import User from "../models/users";
-import Thought from "../models/thought";
+import User from '../models/users.js';
+import Thought from '../models/thought.js';
 import { Request, Response } from 'express';
 
 // GET all users
-export const getAllUsers = async (req: Request, res: Response) => {
+export const getAllUsers = async (_req: Request, res: Response) => {
     try {
+        console.log('Get all users');
         const users = await User.find().populate('thoughts').populate('friends');
         res.json(users);
     } catch (error) {
@@ -62,7 +63,7 @@ export const deleteUser = async (req: Request, res: Response) => {
             res.status(404).json({ message: 'No user found with this id!' });
             return;
         }
-     await Thought.deleteMany({ username: user.username });
+        await Thought.deleteMany({ username: user.username });
         res.json({ message: 'User and associated thoughts deleted!' });
     } catch (error) {
         console.error('Error:', error);

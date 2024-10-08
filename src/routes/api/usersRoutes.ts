@@ -8,9 +8,9 @@ import {
     deleteUser,
     addFriend,
     removeFriend,
-} from '../../controllers/usersController';
+} from '../../controllers/usersController.js';
 
-const router = require('express').Router();
+const router = Router();
 
 router.route('/').get(getAllUsers).post(createUser);
 

@@ -1,8 +1,8 @@
-import User from "../models/users";
-import Thought from "../models/thought";
+// import User from "../models/users";
+import Thought from '../models/thought.js';
 import { Request, Response } from 'express';
 
-export const getAllThoughts = async (req: Request, res: Response) => {
+export const getAllThoughts = async (_req: Request, res: Response) => {
     try {
         const thoughts = await Thought.find();
         res.json(thoughts);
@@ -96,9 +96,9 @@ export const removeReaction = async (req: Request, res: Response) => {
             { _id: req.params.thoughtId },
             { $pull: { reactions: { reactionId: req.params.reactionId } } }
         );
-        res.json(thought);
+        return res.json(thought);
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json(error);
+        return res.status(500).json(error);
     }
 };

@@ -3,9 +3,9 @@ import { Schema, Types, model, type Document } from 'mongoose';
 interface IUser extends Document {
     username: string;
     email: string;
-    thoughts: Types.ObjectId[];
-    friends: Types.ObjectId[];
-    friendCount: number;
+    thoughts?: Types.ObjectId[];
+    friends?: Types.ObjectId[];
+    // friendCount?: number;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -19,7 +19,7 @@ const UserSchema = new Schema<IUser>({
         type: String,
         unique: true,
         required: true,
-        match: [/.+\@.+\..+/, 'Please enter a valid email address'],
+        match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address'],
     },
     thoughts: [
         {
@@ -31,13 +31,19 @@ const UserSchema = new Schema<IUser>({
         type: Schema.Types.ObjectId,
         ref: 'User',
     }],
-});
+},
+{
+    toJSON: {
+        virtuals: true,
+    },
+}
+);
 
 UserSchema.virtual('friendCount').get(function() {
-    return this.friends.length;
+    return this.friends?.length;
 });
 
-const User = model<IUser>('User', UserSchema);
+const User = model('User', UserSchema);
 
 export default User;
 
