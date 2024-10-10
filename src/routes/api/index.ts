@@ -8,4 +8,4 @@ const router = Router();
 router.use('/thoughts', thoughtRouter);
 router.use('/users', userRouter);
 
-export default Router
+export default router;

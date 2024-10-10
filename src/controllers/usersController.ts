@@ -34,7 +34,8 @@ export const getUserById = async (req: Request, res: Response) => {
 export const createUser = async (req: Request, res: Response) => {
     try {
         const user = await User.create(req.body);
-        res.json(user);
+        res.status(200).json(user);
+        // res.json(user);
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json(error);
