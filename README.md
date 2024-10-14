@@ -40,7 +40,7 @@ This project is licensed under the MIT license. For more information, please vis
 Contributions are welcome, please fork the repo and submit a pull request.
 
 ## Video
-Please find a video of the application attached: [VIDEO]().
+Please find a video of the application attached: [VIDEO](https://drive.google.com/file/d/1-PsvCHReNZlpeI_0sBdoAaSdIloJ2jLT/view?usp=sharing).
 
 ## Questions
 If you have any questions, you can find me on GitHub: [REPO](https://github.com/Sabrina-Sawyer/mongoose-social-media-backend).
